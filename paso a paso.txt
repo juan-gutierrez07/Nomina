@@ -1,0 +1,27 @@
+personas:
+	-agregar personas
+	-mostrar personas(tambien mostrar datos trabajador)
+
+Cargos : 
+	-Agregar cargos
+	-Mostrar cargos
+
+Contrato:
+	-Mostrar contratos(buscar algun contrato por persona)
+
+Liquidacion:
+	-agregar liquidacion
+	-historial liquidaciones
+
+Incapacidad o licencia:
+	-agregar incapacidad
+	-mostrar incapacidad (Por persona)
+vacaciones:
+	-agregar vacaciones
+	-mostrar vacaciones.
+novedades:
+	-agregar novedades
+	-mostrar novedades
+
+trayecto de contratacion:
+	-buscar persona(muestra contrataciones)
