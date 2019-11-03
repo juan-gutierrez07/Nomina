@@ -8,7 +8,7 @@
     <form id="formulario" action="datos_cargos.php" method="post">
 
         <fieldset>
-            <label> codigo </label> <input id="codigo" type="number" name="codigo" placeholder="codigo del cargo" />
+            <label> Buscar por codigo </label> <input id="codigo" type="number" name="codigo" placeholder="codigo del cargo" />
             <input class="button" type="submit" name="Buscar" value="Buscar" />
         </fieldset>
 
@@ -33,14 +33,17 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $documento = 0;
             $documento = $_POST['codigo'];
-            $nombre = "";
-            $nombre = $_POST['nombre'];
+           
             $buscar = "select * from cargo where codigo = " . $documento;
-
-            $resultado = mysqli_query($conexion, $buscar) or die("No existe en la base de datos.");
+              if ($documento == 0 || $documento <0) {
+                    $resultado = die("No existe en la base de datos.");
+               }else{
+                    $resultado = mysqli_query($conexion, $buscar) or die("No existe en la base de datos.");
+       
+               }
         }
 
-        echo  "<center>";
+       
         echo "<table border =1px >";
         echo "<tr>";
         echo "<th > Codigo  </th>";
@@ -55,7 +58,6 @@
             echo "</tr>";
         }
         echo "</table>";
-        echo "</center>";
-
+       
         ?>
         <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
