@@ -42,7 +42,7 @@
                                 Personas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="http://127.0.0.1/Frontend-menus/alcari/agregarpersonas.php">Agregar personas</a>
+                                <a class="dropdown-item" href="http://127.0.0.1/Frontend-menus/alcari/agregar-personas.php">Agregar personas</a>
                                 <a class="dropdown-item" href="http://127.0.0.1/Workspace/RegistroAsig.php">datos del trabajador</a>
                             </div>
                         </li>
