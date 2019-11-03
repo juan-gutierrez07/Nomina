@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $direccion = $_POST['direccion'];
     $codigo_empleado = $_POST['cod-empleado'];
     $celular = $_POST['celular'];
-    // $codigo_cargo= $_POST['cargo'];
+    $codigo_cargo= $_POST['cargo'];
     if (isset($_POST['Enviar'])) {
-        if (empty($dni) || empty($nombres) || empty($apellidos) || empty($direccion) || empty($codigo_empleado) || empty($celular)) {
+        if (empty($dni) || empty($nombres) || empty($apellidos) || empty($direccion) || empty($codigo_empleado) || empty($celular) || empty($codigo_cargo)) {
             echo "<script>alert('No puede dejar un campo vacio.. '); </script>";
         } else {
             $datos = "INSERT INTO personas( dni,nombres,apellidos,direccion,codigo_empleado,celular)VALUES('$dni','$nombres','$apellidos','$direccion','$codigo_empleado','$celular')";
@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 <?php
                                 }
-                                //   $codigo_cargo = $datos['codigo'];
+                                   $codigo_cargo = $datos['codigo'];
                                 ?>
                             </select>
                             <input class="enviar" type="submit" value="Enviar" name="Enviar" />
