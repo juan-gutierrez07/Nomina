@@ -20,12 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $direccion = $_POST['direccion'];
     $codigo_empleado = $_POST['cod-empleado'];
     $celular = $_POST['celular'];
-    $codigo_cargo= $_POST['cargo'];
+    $codigo_cargo = $_POST['cargo'];
     if (isset($_POST['Enviar'])) {
         if (empty($dni) || empty($nombres) || empty($apellidos) || empty($direccion) || empty($codigo_empleado) || empty($celular) || empty($codigo_cargo)) {
             echo "<script>alert('No puede dejar un campo vacio.. '); </script>";
         } else {
-            $datos = "INSERT INTO personas( dni,nombres,apellidos,direccion,codigo_empleado,celular)VALUES('$dni','$nombres','$apellidos','$direccion','$codigo_empleado','$celular')";
+            $datos = "INSERT INTO personas( dni,nombres,apellidos,direccion,codigo_empleado,celular,codigo_cargo)VALUES('$dni','$nombres','$apellidos','$direccion','$codigo_empleado','$celular','$codigo_cargo')";
             $resul = mysqli_query($conexion, $datos);
             if ($resul) {
                 echo "<script>alert('Se ha agregado a la persona exitosamente '); </script>";
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
-    <link rel="stylesheet" href="http://127.0.0.1/Frontend-menus/alcari/css/css-agregarper.css">
+    <link rel="stylesheet" href="/alcari/css/css-agregarper.css">
 
 
 </head>
@@ -72,15 +72,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label name="cargos">Cargo: </label>
                             <select name="cargo" id="cargo">
                                 <?php
-                                $x = 1;
                                 $consulta2 = "select  * from cargo ; ";
                                 $resultado2 = mysqli_query($conexion, $consulta2);
                                 while ($datos = mysqli_fetch_array($resultado2)) {
+                                    $sql = "SELECT codigo from cargo,personas where cargo.nombre =personas.nombre"
                                     ?> <option><?php echo $datos['nombre']; ?> </option>
 
                                 <?php
+
                                 }
-                                   $codigo_cargo = $datos['codigo'];
+
                                 ?>
                             </select>
                             <input class="enviar" type="submit" value="Enviar" name="Enviar" />
