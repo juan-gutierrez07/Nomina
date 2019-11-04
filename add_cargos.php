@@ -1,4 +1,33 @@
 <?php include_once('template.php');
+
+?>
+
+<?php
+$usuario = "root";
+$contraseña = "";
+$servidor = "localhost";
+$basededatos  = "practicas";
+$conexion = mysqli_connect($servidor, $usuario, "") or die("No se ha podido conectar al servidor de Base de datos");
+$db = mysqli_select_db($conexion, $basededatos) or die("Upps! Pues va a ser que no se ha podido conectar a la base de datos");
+$consulta = "select * from cargo";
+$resultado = mysqli_query($conexion, $consulta) or die("Algo ha ido mal en la consulta a la base de datos");
+//if(isset($dni) || isset($nombres) || isset($apellidos) || isset($direccion) || isset($codigo_empleado) || isset($celular)
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $codigo = $_POST['codigo'];
+    $nombre_cargo = $_POST['cargo'];
+    if (isset($_POST['Enviar'])) {
+        if (empty($codigo) || empty($nombre_cargo)) {
+            echo "<script>alert('No puede dejar un campo vacio.. '); </script>";
+        } else {
+            $datos = "INSERT INTO cargo(codigo,nombre)VALUES('$codigo','$nombre_cargo')";
+            $resul = mysqli_query($conexion, $datos);
+            if ($resul) {
+                echo "<script>alert('Se ha agregado a la persona exitosamente '); </script>";
+            }
+        }
+    }
+}
+
 ?>
 <html>
 
@@ -14,7 +43,7 @@
             <div class="container">
                 <div class="col-md-12 section-a">
                     <div class="form-post">
-                        <form action="add_persona.php" method="POST">
+                        <form action="add_cargos.php" method="POST">
                             <label name="codigo">Codigo: </label>
                             <input type="text" id="codigo" name="codigo" placeholder="Ingresa el codigo" width="800px" height="200px" />
                             <label name="apellidos">Nombre del cargo: </label>
