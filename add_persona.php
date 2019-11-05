@@ -1,4 +1,5 @@
-<?php include_once('template.php'); ?>
+<?php include_once('template.php');
+?>
 
 
 
@@ -22,13 +23,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $celular = $_POST['celular'];
     $codigo_cargo = $_POST['cargo'];
     if (isset($_POST['Enviar'])) {
+
         if (empty($dni) || empty($nombres) || empty($apellidos) || empty($direccion) || empty($codigo_empleado) || empty($celular) || empty($codigo_cargo)) {
             echo "<script>alert('No puede dejar un campo vacio.. '); </script>";
         } else {
-            $datos = "INSERT INTO personas( dni,nombres,apellidos,direccion,codigo_empleado,celular,codigo_cargo)VALUES('$dni','$nombres','$apellidos','$direccion','$codigo_empleado','$celular','$codigo_cargo')";
-            $resul = mysqli_query($conexion, $datos);
-            if ($resul) {
-                echo "<script>alert('Se ha agregado a la persona exitosamente '); </script>";
+
+            $datos = "INSERT INTO personas( dni,nombres,apellidos,direccion,codigo_empleado,celular)VALUES('$dni','$nombres','$apellidos','$direccion','$codigo_empleado','$celular')";
+            $resul = mysqli_query($conexion, $datos) or die("No puedes repetir registros");
+
+            if (!($resul)) {
+                printf("Error cargando el conjunto de caracteres utf8: %s\n", mysqli_error($conexion));
+            } else {
+                echo "<script>alert('Registro completo.. '); </script>";
             }
         }
     }
