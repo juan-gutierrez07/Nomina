@@ -12,7 +12,7 @@ $resultado = mysqli_query($conexion, $consulta) or die("Algo ha ido mal en la co
 //if(isset($dni) || isset($nombres) || isset($apellidos) || isset($direccion) || isset($codigo_empleado) || isset($celular)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $numero = $_POST['numero'];
-    $descrip = $_POST['descripcion'];
+    $descrip = $_POST['comentario'];
     $tipo = $_POST['tipo'];
     $fecha_inicio = $_POST['fecha-inicio'];
     $fecha_final = $_POST['fecha-final'];
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Agregar Contratos</h1>
+            <h1 class="h2">Agregar Incapacidad</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
             </div>
         </div>
@@ -61,7 +61,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label name="fecha-fin">Fecha final: </label>
                             <input type="date" id="fecha-final" name="fecha-final" width="800px" height="200px" />
                             <label name="tipo">Tipo: </label>
-                            <input type="text" id="tipo" name="tipo">
+                            <select type="text" id="tipo" name="tipo">
+                                <option>incapacidad</option>
+                                <option>licencia</option>
+                            </select>
                             <label name="cargos">Codigo empleado: </label>
                             <select name="cod-empleado" id="cod-empleado">
                                 <?php
@@ -77,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 ?>
                             </select>
-                            <label name="clasificacion">Descripcion: </label>
+                            <label name="descripcion">Descripcion: </label>
                             <textarea name="comentario" id="comentario" placeholder="Descripcion de incapacidad o licencia" cols="80" rows="10"></textarea>
                             <input class="enviar" type="submit" value="Enviar" name="Enviar" />
                         </form>

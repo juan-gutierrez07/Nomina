@@ -101,8 +101,8 @@
                              novedades
                          </a>
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                             <a class="dropdown-item" href="/alcari/add_novedad">Agregar novedades</a>
-                             <a class="dropdown-item" href="/alcari/datos_novedad">datos de novedades</a>
+                             <a class="dropdown-item" href="/alcari/add_novedad.php">Agregar novedades</a>
+                             <a class="dropdown-item" href="/alcari/datos_novedad.php">datos de novedades</a>
                          </div>
                      </li>
 
